@@ -1,0 +1,14 @@
+{
+    "qtConfigure.qtKitDir": "D:/Application/Qt/5.15.2/mingw81_64",
+    "files.associations": {
+        "*.html": "html",
+        "*.c": "c",
+        "qserialport": "cpp",
+        "qserialportinfo": "cpp",
+        "new": "cpp",
+        "qwidget": "cpp",
+        "qmutex": "cpp",
+        "qapplication": "cpp",
+        "qobject": "cpp"
+    }
+}

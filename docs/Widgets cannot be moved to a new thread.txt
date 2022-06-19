@@ -1,0 +1,4 @@
+QObject::moveToThread: Widgets cannot be moved to a new thread
+
+原因分析：UI控件不能移入新线程（继承了QWidgets）
+只有继承QOject才能moveToThread，也就是说不能用子线程，要将其从QWidget改为变为QObject
