@@ -33,13 +33,13 @@ struct qt_meta_stringdata_mainwindow_t {
 static const qt_meta_stringdata_mainwindow_t qt_meta_stringdata_mainwindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "mainwindow"
-QT_MOC_LITERAL(1, 11, 18), // "st_show_portOpenOK"
+QT_MOC_LITERAL(1, 11, 18), // "st_ui_openPortOK"
 QT_MOC_LITERAL(2, 30, 0), // ""
-QT_MOC_LITERAL(3, 31, 20) // "st_show_portOpenFail"
+QT_MOC_LITERAL(3, 31, 20) // "st_ui_openPortFail"
 
     },
     "mainwindow\0st_show_portOpenOK\0\0"
-    "st_show_portOpenFail"
+    "st_ui_openPortFail"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,8 +73,8 @@ void mainwindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<mainwindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->st_show_portOpenOK(); break;
-        case 1: _t->st_show_portOpenFail(); break;
+        case 0: _t->st_ui_openPortOK(); break;
+        case 1: _t->st_ui_openPortFail(); break;
         default: ;
         }
     }

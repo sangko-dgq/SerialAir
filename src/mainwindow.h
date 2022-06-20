@@ -17,10 +17,11 @@
 /*gobal*/
 #include "appconfig.h"
 #include "appdata.h"
+#include "common.h"
 
-
-
-// class appevent;
+/*singlton - bridge*/
+#include "bridge/bridge.h"
+#include <singleton.h>
 
 class mainwindow : public QMainWindow
 {
@@ -30,25 +31,26 @@ public:
     mainwindow(QWidget *parent = nullptr);
     ~mainwindow();
 
-    void FullOnParent(QWidget *childWidget, QWidget *parentWidget);
+    /*mainwindow_initUI*/
+    void initUI();
+    /*初始化串口控制面板UI*/
+    void initPortControlsUI();
 
-    void initPortControls();
-
+    /*mainwindow_buttonTrigger*/
     void on_m_rBn_Refresh_triggered();
     void on_ibn_Connect_triggered();
     void on_ibn_Disconnect_triggered();
-
-
-signals:
-    
-
-public slots:
-    void st_show_portOpenOK();
-    void st_show_portOpenFail();
 
 private:
     Ui_mainwindow *ui;
 
     QtMaterialIconButton *m_ibn_Connect;
     QtMaterialIconButton *m_ibn_DisConnect;
+
+signals:
+
+public slots:
+    /*mainwindow_slots*/
+    void st_ui_openPortOK();
+    void st_ui_openPortFail();
 };

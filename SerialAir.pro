@@ -12,12 +12,14 @@ win32-msvc*:QMAKE_CXXFLAGS += /utf-8
 #sources
 SOURCES += \
     $$files($$PWD/src/*.cpp)\
+    $$files($$PWD/src/ui/mainwindow/*.cpp)\
     $$files($$PWD/src/gobal/*.cpp)\
     $$files($$PWD/src/models/*.cpp)\
     $$files($$PWD/src/bridge/*.cpp)
 
 HEADERS += \
     $$files($$PWD/src/*.h)\
+    $$files($$PWD/src/ui/mainwindow/*.h)\
     $$files($$PWD/src/gobal/*.h)\
     $$files($$PWD/src/models/*.h)\
     $$files($$PWD/src/bridge/*.h)

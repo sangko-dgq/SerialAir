@@ -1,13 +1,3 @@
-/*** 
- * @Author: sangko-dgq 2201225826@qq.com
- * @Date: 2022-06-18 02:26:41
- * @LastEditors: sangko-dgq 2201225826@qq.com
- * @LastEditTime: 2022-06-20 06:28:58
- * @FilePath: \SerialAir_Sangko\src\models\serialModel.cpp
- * @Description: 
- * @
- * @Copyright (c) 2022 by sangko-dgq 2201225826@qq.com, All Rights Reserved. 
- */
 
 #include "serialModel.h"
 #include <singleton.h>

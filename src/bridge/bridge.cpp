@@ -1,5 +1,4 @@
 
-
 #include "bridge.h"
 
 bridge::bridge()
@@ -17,15 +16,13 @@ void bridge::initBridge()
             SIGNAL(sg_openPort(QSerialPortInfo, int, QSerialPort::DataBits, QSerialPort::Parity, QSerialPort::StopBits)),
             this,
             SLOT(st_startSerialThread(QSerialPortInfo, int, QSerialPort::DataBits, QSerialPort::Parity, QSerialPort::StopBits)));
-
 }
 
 /*串口线程*/
 void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
 {
 
-
-   /*------------------------------------------线程初始化和Connect----------------------------------------*/
+    /*------------------------------------------线程初始化和Connect----------------------------------------*/
     /*新建支线程*/
     m_serialThread = new QThread;
     m_serialModel = new serialModel;
@@ -38,8 +35,7 @@ void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSeria
     /*当线程完成(线程已经退出)-自动销毁线程*/
     connect(m_serialThread, SIGNAL(finished()), m_serialThread, SLOT(deleteLater()));
 
-
-     /*-----------------------------------------线程开启----------------------------------------*/
+    /*-----------------------------------------线程开启----------------------------------------*/
     qDebug() << "[Bridge] Start Serial Thread...";
     m_serialThread->start();
 
@@ -69,33 +65,32 @@ void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSeria
 
     qDebug() << "[Bridge] Call model : openPort...";
     m_serialModel->openPort(portInfo, baudRate, dataBits, parity, stopBits);
-
 }
 
-/*退出线程*/
+/*退出串口线程*/
 void bridge::st_quit_serialThread(bool isOpenSerialPortSuccess)
 {
     qDebug() << "[Bridge] Quit m_serialThread...";
     m_serialThread->quit();
     m_serialThread->wait();
 
-    if(!m_serialThread->isFinished()) return;
+    if (!m_serialThread->isFinished())
+        return;
 
     qDebug() << "[Bridge] m_serialThread is Finished...";
 
     m_serialThread->deleteLater();
     qDebug() << "[Bridge] m_serialThread is Deleted...";
 
-    if(isOpenSerialPortSuccess == true)
+    if (isOpenSerialPortSuccess == true)
     {
         qDebug() << "[Bridge] Done Model : portOpenOK";
         qDebug() << "[Bridge] SerialPort Status : " + QString::number(serialPort->isOpen());
+        emit sg_ui_openPortOK();
     }
-    else if(isOpenSerialPortSuccess == false)
+    else if (isOpenSerialPortSuccess == false)
     {
         qDebug() << "[Bridge] Done Model : portOpenFail";
+        emit sg_ui_openPortFail();
     }
-
 }
-
-

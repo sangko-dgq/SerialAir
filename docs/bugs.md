@@ -14,3 +14,52 @@
     
     
 
+2. connect SIGNAL(,.,) 写法。，可以根据sender自动找到信号。 emit地方才应写明从哪取的信号。
+
+   ```
+   // 错误写法
+   connect(&Singleton<bridge>::getInstance(),
+           SIGNAL(Singleton<bridge>::getInstance().sg_ui_openPortOK()),
+           this,
+           SLOT(st_ui_openPortOK()));
+   //正确     
+   connect(&Singleton<bridge>::getInstance(),
+           SIGNAL(sg_ui_openPortOK()), //在this 和 &Singleton<bridge>::getInstance()里面自动寻找sg_ui_openPortOK()
+           this,
+           SLOT(st_ui_openPortOK()));  //在this里面寻找st_ui_openPortOK()
+   ```
+
+​    emit 
+
+​    
+
+```c++
+emit Singleton<bridge>::getInstance().sg_ui_openPortOK();
+```
+
+
+
+3. 声明成员变量后要在cpp里面实例化（new），建议在构造函数里面实例化。
+
+4. 报错：对非静态成员引用必须与特定对象相对
+
+   意思就是引用非静态成员前应该先声明该类的对象。
+   比如类A这样定义
+
+   ```c++
+   class A
+   {
+   private:
+   int n;
+   }
+   ```
+
+   要使用n就要先这样声明A的对象
+
+   ```c++
+   A a;
+   a.n=1
+   ```
+
+   
+
