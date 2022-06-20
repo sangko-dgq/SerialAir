@@ -9,9 +9,13 @@ void mainwindow::st_ui_openPortOK()
     connected = true;
 
     ui->editReceive->clear();
-    ui->editReceive->setFontWeight(24);
-    ui->editReceive->setText(serialPort->portName() + ":" +
-                             QString::number(serialPort->baudRate()));
+    ui->editReceive->setFontWeight(96);
+    ui->editReceive->setText("---------------------" + serialPort->portName() + " : " +
+                             QString::number(serialPort->baudRate()) + "---------------------");
+
+    //serialPort的readyRead信号被触发
+
+
 }
 /*串口打开失败*/
 void mainwindow::st_ui_openPortFail()

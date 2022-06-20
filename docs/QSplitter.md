@@ -1,13 +1,4 @@
-<!--
- * @Author: sangko-dgq 2201225826@qq.com
- * @Date: 2022-06-17 00:31:13
- * @LastEditors: sangko-dgq 2201225826@qq.com
- * @LastEditTime: 2022-06-17 01:36:30
- * @FilePath: \SerialAir_Sangko\docs\QSplitter.md
- * @Description: 
- * 
- * Copyright (c) 2022 by sangko-dgq 2201225826@qq.com, All Rights Reserved. 
--->
+
 # Qtdesigner中使⽤QSplitter创建推拉窗⼝
 
 ### 典型例⼦：在Widgets上左边放置树形菜单，右边放置⽂本框等其他框架，需要实现菜单的边界可以推拉。

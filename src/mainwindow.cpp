@@ -18,6 +18,10 @@ mainwindow::mainwindow(QWidget *parent) : QMainWindow(parent), ui(new Ui_mainwin
             this,
             SLOT(st_ui_openPortOK()));
 
+
+    
+
+
 #ifdef ClearDebugWidgetsStyle
     ui->wLeft->setStyleSheet("");
     ui->wMain->setStyleSheet("");
@@ -34,3 +38,5 @@ mainwindow::~mainwindow()
 {
     delete ui;
 }
+
+

@@ -86,6 +86,7 @@ void bridge::st_quit_serialThread(bool isOpenSerialPortSuccess)
     {
         qDebug() << "[Bridge] Done Model : portOpenOK";
         qDebug() << "[Bridge] SerialPort Status : " + QString::number(serialPort->isOpen());
+
         emit sg_ui_openPortOK();
     }
     else if (isOpenSerialPortSuccess == false)

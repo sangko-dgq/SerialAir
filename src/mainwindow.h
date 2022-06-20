@@ -53,4 +53,5 @@ public slots:
     /*mainwindow_slots*/
     void st_ui_openPortOK();
     void st_ui_openPortFail();
+
 };
