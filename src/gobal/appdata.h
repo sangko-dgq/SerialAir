@@ -7,6 +7,7 @@
 
 
 extern bool connected; /*串口连接状态*/
+extern bool isReadyRead;
 extern QSerialPort *serialPort;
 
 #include "common.h"

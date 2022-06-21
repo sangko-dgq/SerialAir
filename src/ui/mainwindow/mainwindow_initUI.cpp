@@ -47,8 +47,8 @@ void mainwindow::initUI()
             { on_m_rBn_Refresh_triggered(); });
 
     /*------------------------------------------------------接收区初始化---------------------------------------------------*/
-    QtMaterialScrollBar *m_H_sBar = new QtMaterialScrollBar;
-    QtMaterialScrollBar *m_V_sBar = new QtMaterialScrollBar;
+    m_H_sBar = new QtMaterialScrollBar;
+    m_V_sBar = new QtMaterialScrollBar;
     m_V_sBar->setHideOnMouseOut(false);
     m_H_sBar->setHideOnMouseOut(false);
     m_H_sBar->setOrientation(Qt::Horizontal);
@@ -63,10 +63,11 @@ void mainwindow::initUI()
         "<p>007-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>"
         "<p>008-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>");
     ui->editReceive->setTextColor(Qt::white);
-    ui->editReceive->setLineWrapMode(QTextEdit::NoWrap);
+    ui->editReceive->setLineWrapMode(QTextEdit::NoWrap); //自动换行
     ui->editReceive->update();
     ui->editReceive->setVerticalScrollBar(m_V_sBar);
     ui->editReceive->setHorizontalScrollBar(m_H_sBar);
+   
     
     
     /*--------------------------------------------------初始化串口控制面板UI-----------------------------------------------*/

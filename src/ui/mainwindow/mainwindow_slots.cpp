@@ -13,8 +13,9 @@ void mainwindow::st_ui_openPortOK()
     ui->editReceive->setText("---------------------" + serialPort->portName() + " : " +
                              QString::number(serialPort->baudRate()) + "---------------------");
 
-    //serialPort的readyRead信号被触发
-
+    /*请求开启 串口数据监听*/
+    qDebug() << "[UI] Request readPortData thread";
+    emit Singleton<bridge>::getInstance().sg_enable_PortDataListener();
 
 }
 /*串口打开失败*/
@@ -24,3 +25,20 @@ void mainwindow::st_ui_openPortFail()
     // qDebug() << "Port cannot be open signal received!";
     ui->statusBar->showMessage("Cannot open port!");
 }
+
+void mainwindow::st_ui_dataAppendToUI(char * data)
+{
+    ui->editReceive->append(data);
+    
+    #ifdef m_V_sBar_autoScroll
+    m_V_sBar->setValue(m_V_sBar->maximum());
+    #endif
+
+}
+
+
+
+
+
+
+

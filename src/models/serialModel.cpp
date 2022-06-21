@@ -6,12 +6,15 @@
 #include "../bridge/bridge.h"
 
 bool connected; /*串口连接状态*/
+bool isReadyRead = false; /*数据监听开启*/
 QSerialPort *serialPort;
 
-serialModel::serialModel() {}
 
+
+serialModel::serialModel() {}
 serialModel::~serialModel() {}
 
+/*-------------------------------------------------------OpenPort Thread---------------------------------------------------*/
 /***
  * @description:  打开串口
  * @param {QSerialPortInfo} portInfo
@@ -34,20 +37,13 @@ void serialModel::openPort(QSerialPortInfo portInfo, int baudRate,
     serialPort->setDataBits(dataBits);
     serialPort->setStopBits(stopBits);
 
-    qDebug() << "portInfo" + portInfo.portName();
-    qDebug() << "baudRate" + QString::number(serialPort->baudRate());
-
-    connect(serialPort, SIGNAL(readyRead()), this, SLOT(st_readPortData()));
-
     if (serialPort->open(
-                QIODevice::ReadWrite)) /*PS：serialPort的readyRead信号被触发*/
+                QIODevice::ReadWrite))
     {
-//        serialPort->setBaudRate(baudRate);
-//        serialPort->setParity(parity);
-//        serialPort->setDataBits(dataBits);
-//        serialPort->setStopBits(stopBits);
-
-        qDebug() << QString::number(serialPort ->bytesAvailable());
+        //        serialPort->setBaudRate(baudRate);
+        //        serialPort->setParity(parity);
+        //        serialPort->setDataBits(dataBits);
+        //        serialPort->setStopBits(stopBits);
 
         qDebug() << "[Model] done model : openPort : ok";
         emit Singleton<bridge>::getInstance().sg_done_model_openPort(true);
@@ -57,16 +53,32 @@ void serialModel::openPort(QSerialPortInfo portInfo, int baudRate,
     }
 }
 
-void serialModel::st_openPort(QSerialPortInfo portInfo, int baudRate,
-                              QSerialPort::DataBits dataBits,
-                              QSerialPort::Parity parity,
-                              QSerialPort::StopBits stopBits) {
-    qDebug() << "[Model] st_openPort";
-    openPort(portInfo, baudRate, dataBits, parity, stopBits);
+
+/*-------------------------------------------------------readData Thread---------------------------------------------------*/
+/*读取串口数据*/
+void serialModel::readPortData()
+{
+    qDebug() << "[Model] readyRead from : " + serialPort->portName() + ": ready : " + QString::number(isReadyRead);
+    qDebug() << QString::number(serialPort ->bytesAvailable());  //bytesAvailable为收到的数据总量
+
+    if(!serialPort->bytesAvailable()) return;
+
+    /*bytes is Available*/
+    QByteArray arr_dataReceive = serialPort->readAll();
+    if(arr_dataReceive.isEmpty())  return;
+
+    /*数组里有数据*/
+    char *temp = arr_dataReceive.data();       // 得到一个'\0' 的终止char *数据
+
+    /*发送UI操作*/
+    emit Singleton<bridge>::getInstance().sg_ui_dataAppendToUI(temp);
 }
 
-/*读取串口数据*/
-void serialModel::st_readPortData()
-{
-    qDebug() << "[Model] readyRead from : " + serialPort->portName();
-}
+
+
+
+
+
+
+
+

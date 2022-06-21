@@ -67,3 +67,36 @@ emit Singleton<bridge>::getInstance().sg_ui_openPortOK();
 
 原因分析：UI控件不能移入新线程（继承了QWidgets）
 只有继承QOject才能moveToThread，也就是说不能用子线程，要将其从QWidget改为变为QObject
+
+
+
+6.
+
+```
+  /*当线程开启, 执行模型层的测试槽函数*/
+    /*这里started信号参数和st_openPort不一致，不能绑定，需要再创建一个中间槽函数来实现*/
+    /*
+     * 中转方式-1
+     * 线程started()信号触发model里的slot;
+     * 注意：由于Strated无参数，基于Qt信号与槽绑定法则（信号参数个数 >= 槽参数个数）
+     * 故该方式，仅仅适合无参数的槽函数
+     *以下写法会报错
+     */
+    //    connect(m_openPortThread,
+    //            SIGNAL(started()),
+    //            m_serialModel,
+    //            SLOT(st_openPort(QSerialPortInfo, int, QSerialPort::DataBits, QSerialPort::Parity, QSerialPort::StopBits)));
+
+    /*
+     * 中转方式-2
+     * 如果判断线程是否Running（线程start成功就Running），来直接调用model里的slot;
+     * 适合无参数/有参数的槽函数
+     */
+    if (!m_openPortThread->isRunning())
+        return;
+
+    qDebug() << "[Bridge] m_openPortThread is Running...";
+
+    qDebug() << "[Bridge] Call model : openPort...";
+    m_serialModel->openPort(portInfo, baudRate, dataBits, parity, stopBits);
+```

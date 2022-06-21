@@ -1,3 +1,4 @@
+
 #pragma once
 #include "ui_mainwindow.h"
 #include <QMainWindow>
@@ -47,11 +48,16 @@ private:
     QtMaterialIconButton *m_ibn_Connect;
     QtMaterialIconButton *m_ibn_DisConnect;
 
+     QtMaterialScrollBar *m_H_sBar;
+    QtMaterialScrollBar *m_V_sBar;
+
 signals:
 
 public slots:
     /*mainwindow_slots*/
     void st_ui_openPortOK();
     void st_ui_openPortFail();
+
+    void st_ui_dataAppendToUI(char *data);
 
 };

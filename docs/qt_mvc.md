@@ -18,16 +18,16 @@
 
    ```c++
    /*串口线程*/
-   void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
+   void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
    {
        /*新建支线程*/
-       m_serialThread = new QThread;
+       m_openPortThread = new QThread;
        m_serialModel = new serialModel;
-       m_serialModel->moveToThread(m_serialThread);
+       m_serialModel->moveToThread(m_openPortThread);
    
        /*开启支线程*/
        qDebug() << "[Bridge] Start Serial Thread...";
-       m_serialThread->start();
+       m_openPortThread->start();
    
        /*当线程开启, 跳到模型层执行模型层的测试槽函数*/
        /*
@@ -35,20 +35,20 @@
         * 如果判断线程是否Running（线程start成功就Running），来直接调用model里的slot;
         * 适合无参数/有参数的槽函数
         */
-       if (!m_serialThread->isRunning())
+       if (!m_openPortThread->isRunning())
            return;
    
-       qDebug() << "[Bridge] m_serialThread is Running...";
+       qDebug() << "[Bridge] m_openPortThread is Running...";
    
        qDebug() << "[Bridge] Call model : openPort...";
        m_serialModel->openPort(portInfo, baudRate, dataBits, parity, stopBits);
        
        
        /*模型层的测试槽函数执行完成,执行退出线程槽函数*/
-       connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_quit_serialThread(bool)));
+       connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_off_openPortThread(bool)));
        /*当线程完成(已经完成退出线程),*/
        /*当线程完成(线程已经退出)-自动销毁线程*/
-       connect(m_serialThread, SIGNAL(finished()), m_serialThread, SLOT(deleteLater()));
+       connect(m_openPortThread, SIGNAL(finished()), m_openPortThread, SLOT(deleteLater()));
    
    }
    
@@ -58,27 +58,27 @@
 
 ```
 /*串口线程*/
-void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
+void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
 {
 
 
     /*------------------------------------------线程初始化和Connect----------------------------------------*/
     /*新建支线程*/
-    m_serialThread = new QThread;
+    m_openPortThread = new QThread;
     m_serialModel = new serialModel;
-    m_serialModel->moveToThread(m_serialThread);
+    m_serialModel->moveToThread(m_openPortThread);
 
     /*模型层的测试槽函数执行完成,执行退出线程槽函数*/
-    connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_quit_serialThread(bool)));
+    connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_off_openPortThread(bool)));
     
     /*当线程完成(已经完成退出线程),*/
     /*当线程完成(线程已经退出)-自动销毁线程*/
-    connect(m_serialThread, SIGNAL(finished()), m_serialThread, SLOT(deleteLater()));
+    connect(m_openPortThread, SIGNAL(finished()), m_openPortThread, SLOT(deleteLater()));
 
 
      /*-----------------------------------------线程开启----------------------------------------*/
     qDebug() << "[Bridge] Start Serial Thread...";
-    m_serialThread->start();
+    m_openPortThread->start();
 
     /*当线程开启, 跳到模型层执行模型层的测试槽函数*/
     /*
@@ -86,10 +86,10 @@ void bridge::st_startSerialThread(QSerialPortInfo portInfo, int baudRate, QSeria
      * 如果判断线程是否Running（线程start成功就Running），来直接调用model里的slot;
      * 适合无参数/有参数的槽函数
      */
-    if (!m_serialThread->isRunning())
+    if (!m_openPortThread->isRunning())
         return;
 
-    qDebug() << "[Bridge] m_serialThread is Running...";
+    qDebug() << "[Bridge] m_openPortThread is Running...";
 
     qDebug() << "[Bridge] Call model : openPort...";
     m_serialModel->openPort(portInfo, baudRate, dataBits, parity, stopBits);

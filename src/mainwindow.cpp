@@ -18,6 +18,10 @@ mainwindow::mainwindow(QWidget *parent) : QMainWindow(parent), ui(new Ui_mainwin
             this,
             SLOT(st_ui_openPortOK()));
 
+    connect(&Singleton<bridge>::getInstance(),
+            SIGNAL(sg_ui_dataAppendToUI(char*)),
+            this,
+            SLOT(st_ui_dataAppendToUI(char*)));
 
     
 
