@@ -9,6 +9,7 @@
         "qwidget": "cpp",
         "qmutex": "cpp",
         "qapplication": "cpp",
-        "qobject": "cpp"
+        "qobject": "cpp",
+        "qscopedpointer": "cpp"
     }
 }

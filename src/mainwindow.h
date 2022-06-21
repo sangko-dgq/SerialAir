@@ -42,6 +42,8 @@ public:
     void on_ibn_Connect_triggered();
     void on_ibn_Disconnect_triggered();
 
+    void enable_or_disable_portControls(bool enable);
+
 private:
     Ui_mainwindow *ui;
 
@@ -59,5 +61,8 @@ public slots:
     void st_ui_openPortFail();
 
     void st_ui_dataAppendToUI(char *data);
+
+    void st_ui_closePorkOK();
+
 
 };

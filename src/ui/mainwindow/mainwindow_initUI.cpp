@@ -67,8 +67,6 @@ void mainwindow::initUI()
     ui->editReceive->update();
     ui->editReceive->setVerticalScrollBar(m_V_sBar);
     ui->editReceive->setHorizontalScrollBar(m_H_sBar);
-   
-    
     
     /*--------------------------------------------------初始化串口控制面板UI-----------------------------------------------*/
     initPortControlsUI();

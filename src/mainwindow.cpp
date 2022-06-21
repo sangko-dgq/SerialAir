@@ -22,6 +22,11 @@ mainwindow::mainwindow(QWidget *parent) : QMainWindow(parent), ui(new Ui_mainwin
             SIGNAL(sg_ui_dataAppendToUI(char*)),
             this,
             SLOT(st_ui_dataAppendToUI(char*)));
+    
+    connect(&Singleton<bridge>::getInstance(),
+            SIGNAL(sg_ui_closePorkOK()), 
+            this, 
+        SLOT(st_ui_closePorkOK()));
 
     
 

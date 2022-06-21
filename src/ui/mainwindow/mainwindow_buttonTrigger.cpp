@@ -1,3 +1,4 @@
+
 #include "../../mainwindow.h"
 
 
@@ -10,7 +11,6 @@ void mainwindow::on_m_rBn_Refresh_triggered()
 /*当 打开串口连接 按钮按下*/
 void mainwindow::on_ibn_Connect_triggered()
 {
-
     /*已连接*/
     if (connected) /*防止连接成功后，再点击请求连接*/
     {
@@ -73,4 +73,13 @@ void mainwindow::on_ibn_Connect_triggered()
 /*当 关闭串口连接 按钮按下*/
 void mainwindow::on_ibn_Disconnect_triggered()
 {
+    if (connected)
+    {       
+        emit Singleton<bridge>::getInstance().sg_closePort();                                                    
+
+        ui->statusBar->showMessage ("Disconnected!");                                                       
+        ui->actionConnect->setEnabled (true);
+        
+
+    }
 }

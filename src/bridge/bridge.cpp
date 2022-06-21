@@ -21,9 +21,21 @@ void bridge::initBridge()
             SIGNAL(sg_enable_PortDataListener()),
             this,
             SLOT(st_on_readDataThread()));
+
+    connect(this, SIGNAL(sg_closePort()), this, SLOT(st_bridge_closePort()));
+
+    /*完成关闭串口模型*/
+    connect(this, &bridge::sg_done_model_closePort, this, [&]()
+    {
+        connected = false;
+        delete serialPort;
+        serialPort = nullptr;
+
+        emit sg_ui_closePorkOK();
+    });
 }
 
-/*打开串口线程*/
+/*打开串口*/
 void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
 {
 
@@ -131,6 +143,13 @@ void bridge::st_on_readDataThread()
 
 }
 
+void bridge::st_bridge_closePort()
+{
+    if(!connected) return;
+    /*退出串口数据读取线程*/
+    m_serialModel->closePort();
+
+}
 
 
 

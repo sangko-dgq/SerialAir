@@ -1,3 +1,13 @@
+/*** 
+ * @Author: sangko-dgq 2201225826@qq.com
+ * @Date: 2022-06-18 15:16:21
+ * @LastEditors: sangko-dgq 2201225826@qq.com
+ * @LastEditTime: 2022-06-21 21:27:59
+ * @FilePath: \SerialAir_Sangko\src\gobal\singleton.h
+ * @Description: 
+ * @
+ * @Copyright (c) 2022 by sangko-dgq 2201225826@qq.com, All Rights Reserved. 
+ */
 
 #pragma once
 

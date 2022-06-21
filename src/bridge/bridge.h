@@ -40,6 +40,11 @@ signals:
 
     void sg_ui_dataAppendToUI(char *data);
 
+    /*close port*/
+    void sg_closePort();
+    void sg_done_model_closePort();
+    void sg_ui_closePorkOK();
+
 
 
 public slots:
@@ -48,5 +53,8 @@ public slots:
     void st_off_openPortThread(bool isOpenSerialPortSuccess);
 
     void st_on_readDataThread();
+
+
+    void st_bridge_closePort();
 
 };

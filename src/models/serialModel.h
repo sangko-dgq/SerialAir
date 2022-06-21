@@ -16,7 +16,8 @@ public:
 
     /*打开串口*/
     void openPort(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits);
-
+    /*关闭串口*/
+    void closePort();
    
 private:
 signals:
@@ -30,5 +31,6 @@ signals:
 public slots:
     /*读取串口数据*/
    void readPortData();
+
 
 };
