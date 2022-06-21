@@ -12,11 +12,7 @@ void mainwindow::on_m_rBn_Refresh_triggered()
 void mainwindow::on_ibn_Connect_triggered()
 {
     /*已连接*/
-    if (connected) /*防止连接成功后，再点击请求连接*/
-    {
-        m_ibn_Connect->setEnabled(false);
-        return;
-    }
+    if (connected) return; /*防止连接成功后，再点击请求连接*/
 
     /*未连接*/
     /* Get parameters from controls first */

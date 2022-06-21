@@ -27,12 +27,23 @@ void bridge::initBridge()
     /*完成关闭串口模型*/
     connect(this, &bridge::sg_done_model_closePort, this, [&]()
     {
+        /*当线程完成(线程已经退出)-自动销毁线程对象*/
+        connect(m_readPortDataThread, SIGNAL(finished()), m_readPortDataThread, SLOT(deleteLater()));
+
+        /*退出数据接收线程*/
+        m_readPortDataThread->quit();
+        m_readPortDataThread->wait();
+        
+        /*销毁对象*/
         connected = false;
         delete serialPort;
         serialPort = nullptr;
 
         emit sg_ui_closePorkOK();
     });
+
+
+    
 }
 
 /*打开串口*/
@@ -109,9 +120,6 @@ void bridge::st_on_readDataThread()
     m_serialModel = new serialModel;
     m_serialModel->moveToThread(m_readPortDataThread);
 
-
-
-
 //    /*模型层的测试槽函数执行完成,执行退出线程槽函数*/
 //    connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_off_openPortThread(bool)));
 
@@ -143,10 +151,11 @@ void bridge::st_on_readDataThread()
 
 }
 
+/*Bridge-关闭串口*/
 void bridge::st_bridge_closePort()
 {
     if(!connected) return;
-    /*退出串口数据读取线程*/
+    /*调用Model层closePort接口函数*/
     m_serialModel->closePort();
 
 }
