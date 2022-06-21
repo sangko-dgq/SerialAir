@@ -42,13 +42,14 @@ public:
     void on_ibn_Connect_triggered();
     void on_ibn_Disconnect_triggered();
 
-    void enable_or_disable_portControls(bool enable);
+    void enablePortControls(bool enable);
 
 private:
     Ui_mainwindow *ui;
 
     QtMaterialIconButton *m_ibn_Connect;
     QtMaterialIconButton *m_ibn_DisConnect;
+    QtMaterialRaisedButton *m_rBn_Refresh;
 
      QtMaterialScrollBar *m_H_sBar;
     QtMaterialScrollBar *m_V_sBar;

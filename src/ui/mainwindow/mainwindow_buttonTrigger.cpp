@@ -77,9 +77,6 @@ void mainwindow::on_ibn_Disconnect_triggered()
     {       
         emit Singleton<bridge>::getInstance().sg_closePort();                                                    
 
-        ui->statusBar->showMessage ("Disconnected!");                                                       
-        ui->actionConnect->setEnabled (true);
-        
-
+        ui->statusBar->showMessage ("Disconnected!");                                                               
     }
 }

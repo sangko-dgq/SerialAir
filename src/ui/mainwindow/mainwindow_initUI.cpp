@@ -8,9 +8,13 @@ common *m_common;
 
 void mainwindow::initUI()
 {
+        /*--------------------------------------------mainwindow--------------------------------*/
+    
+    this->setWindowTitle(QString(ApplicationName) + "-" + QString(ApplicationVersion));
+    
+
     
     m_common = new common;
-
     /*--------------------------------------------顶部菜单栏Appbar初始化--------------------------------*/
     /*appbar*/
     QtMaterialAppBar *m_appBar = new QtMaterialAppBar;
@@ -40,7 +44,7 @@ void mainwindow::initUI()
             { on_ibn_Disconnect_triggered(); });
 
     /*刷新按钮初始化*/
-    QtMaterialRaisedButton *m_rBn_Refresh = new QtMaterialRaisedButton("Refresh");
+    m_rBn_Refresh = new QtMaterialRaisedButton("Refresh");
     m_rBn_Refresh->setBackgroundColor("#00c853");
     m_common->fullOnParent(m_rBn_Refresh, ui->wBnRefush);
     connect(m_rBn_Refresh, &QPushButton::pressed, this, [&]
@@ -52,7 +56,12 @@ void mainwindow::initUI()
     m_V_sBar->setHideOnMouseOut(false);
     m_H_sBar->setHideOnMouseOut(false);
     m_H_sBar->setOrientation(Qt::Horizontal);
-    ui->editReceive->setTextColor(Qt::white);
+    
+    ui->editReceive->setTextColor(Qt::black); /*theme defalut*/
+    #ifdef darkTheme
+        ui->editReceive->setTextColor(Qt::white);
+    #endif
+
     ui->editReceive->setText(
         "<p>001-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>"
         "<p>002-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>"
@@ -62,7 +71,7 @@ void mainwindow::initUI()
         "<p>006-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>"
         "<p>007-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>"
         "<p>008-The distinction between the subjects of syntax and semantics has its origin in the study of natural languages.</p>");
-    ui->editReceive->setTextColor(Qt::white);
+
     ui->editReceive->setLineWrapMode(QTextEdit::NoWrap); //自动换行
     ui->editReceive->update();
     ui->editReceive->setVerticalScrollBar(m_V_sBar);
