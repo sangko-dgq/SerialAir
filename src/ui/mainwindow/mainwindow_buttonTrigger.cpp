@@ -16,11 +16,11 @@ void mainwindow::on_ibn_Connect_triggered()
 
     /*未连接*/
     /* Get parameters from controls first */
-    QSerialPortInfo portInfo(ui->comboPort->currentText()); // Temporary object, needed to create QSerialPort
-    int baudRate = ui->comboBaud->currentText().toInt();    // Get baud rate from combo box
-    int dataBitsIndex = ui->comboData->currentIndex();      // Get index of data bits combo box
-    int parityIndex = ui->comboParity->currentIndex();      // Get index of parity combo box
-    int stopBitsIndex = ui->comboStop->currentIndex();      // Get index of stop bits combo box
+    QSerialPortInfo portInfo(ui->comboPort->currentText()); 
+    int baudRate = ui->comboBaud->currentText().toInt();  
+    int dataBitsIndex = ui->comboData->currentIndex();    
+    int parityIndex = ui->comboParity->currentIndex();     
+    int stopBitsIndex = ui->comboStop->currentIndex();    
     QSerialPort::DataBits dataBits;
     QSerialPort::Parity parity;
     QSerialPort::StopBits stopBits;

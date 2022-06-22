@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'appevent.h'
+** Meta object code from reading C++ file 'common.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.15.2)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../src/gobal/appevent.h"
+#include "../../src/gobal/common.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'appevent.h' doesn't include <QObject>."
+#error "The header file 'common.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.15.2. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,25 +21,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_appevent_t {
+struct qt_meta_stringdata_common_t {
     QByteArrayData data[1];
-    char stringdata0[9];
+    char stringdata0[7];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_appevent_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_common_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_appevent_t qt_meta_stringdata_appevent = {
+static const qt_meta_stringdata_common_t qt_meta_stringdata_common = {
     {
-QT_MOC_LITERAL(0, 0, 8) // "appevent"
+QT_MOC_LITERAL(0, 0, 6) // "common"
 
     },
-    "appevent"
+    "common"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_appevent[] = {
+static const uint qt_meta_data_common[] = {
 
  // content:
        8,       // revision
@@ -55,7 +55,7 @@ static const uint qt_meta_data_appevent[] = {
        0        // eod
 };
 
-void appevent::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void common::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -63,30 +63,30 @@ void appevent::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject appevent::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject common::staticMetaObject = { {
     QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_appevent.data,
-    qt_meta_data_appevent,
+    qt_meta_stringdata_common.data,
+    qt_meta_data_common,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *appevent::metaObject() const
+const QMetaObject *common::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *appevent::qt_metacast(const char *_clname)
+void *common::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_appevent.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_common.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int appevent::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int common::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     return _id;

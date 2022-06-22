@@ -318,6 +318,7 @@ public:
         wAppbar = new QWidget(wMain);
         wAppbar->setObjectName(QString::fromUtf8("wAppbar"));
         wAppbar->setMaximumSize(QSize(16777215, 48));
+        wAppbar->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 170, 255);"));
 
         gridLayout->addWidget(wAppbar, 0, 0, 1, 1);
 

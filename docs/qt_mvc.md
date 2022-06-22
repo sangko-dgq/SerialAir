@@ -18,7 +18,7 @@
 
    ```c++
    /*串口线程*/
-   void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
+   void bridge::st_bridge_openPort(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
    {
        /*新建支线程*/
        m_openPortThread = new QThread;
@@ -45,7 +45,7 @@
        
        
        /*模型层的测试槽函数执行完成,执行退出线程槽函数*/
-       connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_off_openPortThread(bool)));
+       connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_bridge_returnOpenPortRes(bool)));
        /*当线程完成(已经完成退出线程),*/
        /*当线程完成(线程已经退出)-自动销毁线程*/
        connect(m_openPortThread, SIGNAL(finished()), m_openPortThread, SLOT(deleteLater()));
@@ -58,7 +58,7 @@
 
 ```
 /*串口线程*/
-void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
+void bridge::st_bridge_openPort(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits)
 {
 
 
@@ -69,7 +69,7 @@ void bridge::st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSeria
     m_serialModel->moveToThread(m_openPortThread);
 
     /*模型层的测试槽函数执行完成,执行退出线程槽函数*/
-    connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_off_openPortThread(bool)));
+    connect(this, SIGNAL(sg_done_model_openPort(bool)), this, SLOT(st_bridge_returnOpenPortRes(bool)));
     
     /*当线程完成(已经完成退出线程),*/
     /*当线程完成(线程已经退出)-自动销毁线程*/

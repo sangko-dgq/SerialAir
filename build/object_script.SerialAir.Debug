@@ -1,11 +1,13 @@
 debug/main.o
 debug/mainwindow.o
-debug/appevent.o
-debug/singleton.o
+debug/mainwindow_buttonTrigger.o
+debug/mainwindow_initUI.o
+debug/mainwindow_slots.o
+debug/common.o
 debug/serialModel.o
 debug/bridge.o
 debug/qrc_resources.o
 debug/moc_mainwindow.o
-debug/moc_appevent.o
-debug/moc_portEvents.o
+debug/moc_common.o
+debug/moc_serialModel.o
 debug/moc_bridge.o

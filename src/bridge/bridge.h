@@ -49,8 +49,8 @@ signals:
 
 public slots:
     /*串口线程*/
-    void st_on_openPortThread(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits);
-    void st_off_openPortThread(bool isOpenSerialPortSuccess);
+    void st_bridge_openPort(QSerialPortInfo portInfo, int baudRate, QSerialPort::DataBits dataBits, QSerialPort::Parity parity, QSerialPort::StopBits stopBits);
+    void st_bridge_returnOpenPortRes(bool isOpenSerialPortSuccess);
 
     void st_on_readDataThread();
 

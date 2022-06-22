@@ -1,11 +1,13 @@
 release/main.o
 release/mainwindow.o
-release/appevent.o
-release/singleton.o
+release/mainwindow_buttonTrigger.o
+release/mainwindow_initUI.o
+release/mainwindow_slots.o
+release/common.o
 release/serialModel.o
 release/bridge.o
 release/qrc_resources.o
 release/moc_mainwindow.o
-release/moc_appevent.o
-release/moc_portEvents.o
+release/moc_common.o
+release/moc_serialModel.o
 release/moc_bridge.o
