@@ -4,8 +4,7 @@
 bridge::bridge() { initBridge(); }
 bridge::~bridge(){};
 
-void bridge::initBridge() 
-{
+void bridge::initBridge() {
   connect(this,
           SIGNAL(sg_openPort(QSerialPortInfo, int, QSerialPort::DataBits,
                              QSerialPort::Parity, QSerialPort::StopBits)),
@@ -102,4 +101,5 @@ void bridge::st_bridge_closePort() {
     return;
   /*调用Model层closePort接口函数*/
   m_serialModel->closePort();
+
 }

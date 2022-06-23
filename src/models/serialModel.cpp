@@ -1,8 +1,6 @@
-
-
 #include "serialModel.h"
-#include <singleton.h>
 
+#include <singleton.h>
 #include "../bridge/bridge.h"
 
 bool connected;           /*串口连接状态*/

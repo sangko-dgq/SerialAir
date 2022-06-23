@@ -41,7 +41,6 @@ public:
     void on_m_rBn_Refresh_triggered();
     void on_ibn_Connect_triggered();
     void on_ibn_Disconnect_triggered();
-
     void enablePortControls(bool enable);
 
 private:
@@ -50,8 +49,7 @@ private:
     QtMaterialIconButton *m_ibn_Connect;
     QtMaterialIconButton *m_ibn_DisConnect;
     QtMaterialRaisedButton *m_rBn_Refresh;
-
-     QtMaterialScrollBar *m_H_sBar;
+    QtMaterialScrollBar *m_H_sBar;
     QtMaterialScrollBar *m_V_sBar;
 
 signals:
@@ -60,9 +58,7 @@ public slots:
     /*mainwindow_slots*/
     void st_ui_openPortOK();
     void st_ui_openPortFail();
-
     void st_ui_dataAppendToUI(char *data);
-
     void st_ui_closePorkOK();
 
 

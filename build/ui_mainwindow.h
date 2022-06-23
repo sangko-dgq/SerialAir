@@ -91,6 +91,7 @@ public:
         font.setFamily(QString::fromUtf8("Microsoft YaHei"));
         mainwindow->setFont(font);
         mainwindow->setLayoutDirection(Qt::LeftToRight);
+        mainwindow->setStyleSheet(QString::fromUtf8(""));
         actionConnect = new QAction(mainwindow);
         actionConnect->setObjectName(QString::fromUtf8("actionConnect"));
         actionDisconnect = new QAction(mainwindow);
@@ -109,15 +110,17 @@ public:
         actionRefresh->setObjectName(QString::fromUtf8("actionRefresh"));
         wMain = new QWidget(mainwindow);
         wMain->setObjectName(QString::fromUtf8("wMain"));
+        wMain->setStyleSheet(QString::fromUtf8(""));
         gridLayout = new QGridLayout(wMain);
-        gridLayout->setSpacing(0);
+        gridLayout->setSpacing(2);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, 0, 0);
+        gridLayout->setContentsMargins(2, 2, 2, 2);
         splitter_2 = new QSplitter(wMain);
         splitter_2->setObjectName(QString::fromUtf8("splitter_2"));
         splitter_2->setEnabled(true);
         splitter_2->setMaximumSize(QSize(16777215, 16777215));
         splitter_2->setOrientation(Qt::Horizontal);
+        splitter_2->setHandleWidth(2);
         wLeft = new QWidget(splitter_2);
         wLeft->setObjectName(QString::fromUtf8("wLeft"));
         wLeft->setMaximumSize(QSize(224, 16777215));
@@ -128,16 +131,19 @@ public:
         splitter_4 = new QSplitter(wLeft);
         splitter_4->setObjectName(QString::fromUtf8("splitter_4"));
         splitter_4->setOrientation(Qt::Vertical);
+        splitter_4->setHandleWidth(2);
         splitter_4->setChildrenCollapsible(false);
         splitter_3 = new QSplitter(splitter_4);
         splitter_3->setObjectName(QString::fromUtf8("splitter_3"));
         splitter_3->setOrientation(Qt::Vertical);
+        splitter_3->setHandleWidth(2);
         splitter_3->setChildrenCollapsible(false);
         wPortControls = new QWidget(splitter_3);
         wPortControls->setObjectName(QString::fromUtf8("wPortControls"));
         wPortControls->setMinimumSize(QSize(0, 0));
         wPortControls->setMaximumSize(QSize(16777215, 256));
-        wPortControls->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 255, 127);"));
+        wPortControls->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 255, 127);\n"
+"border:2px solid rgb(0,0,0);"));
         gridLayout_4 = new QGridLayout(wPortControls);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
         verticalLayout = new QVBoxLayout();
@@ -146,6 +152,7 @@ public:
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         labelPort = new QLabel(wPortControls);
         labelPort->setObjectName(QString::fromUtf8("labelPort"));
+        labelPort->setStyleSheet(QString::fromUtf8("border:0px solid rgb(0,0,0);"));
 
         horizontalLayout->addWidget(labelPort);
 
@@ -157,7 +164,8 @@ public:
         sizePolicy.setHeightForWidth(comboPort->sizePolicy().hasHeightForWidth());
         comboPort->setSizePolicy(sizePolicy);
         comboPort->setMinimumSize(QSize(148, 24));
-        comboPort->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboPort->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"border:1px solid rgb(0,0,0);"));
 
         horizontalLayout->addWidget(comboPort);
 
@@ -168,6 +176,7 @@ public:
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         labelBaud = new QLabel(wPortControls);
         labelBaud->setObjectName(QString::fromUtf8("labelBaud"));
+        labelBaud->setStyleSheet(QString::fromUtf8("border:0px solid rgb(0,0,0);"));
 
         horizontalLayout_2->addWidget(labelBaud);
 
@@ -176,7 +185,8 @@ public:
         sizePolicy.setHeightForWidth(comboBaud->sizePolicy().hasHeightForWidth());
         comboBaud->setSizePolicy(sizePolicy);
         comboBaud->setMinimumSize(QSize(148, 24));
-        comboBaud->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboBaud->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"border:1px solid rgb(0,0,0);"));
 
         horizontalLayout_2->addWidget(comboBaud);
 
@@ -187,6 +197,7 @@ public:
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         labelData = new QLabel(wPortControls);
         labelData->setObjectName(QString::fromUtf8("labelData"));
+        labelData->setStyleSheet(QString::fromUtf8("border:0px solid rgb(0,0,0);"));
 
         horizontalLayout_3->addWidget(labelData);
 
@@ -195,7 +206,8 @@ public:
         sizePolicy.setHeightForWidth(comboData->sizePolicy().hasHeightForWidth());
         comboData->setSizePolicy(sizePolicy);
         comboData->setMinimumSize(QSize(148, 24));
-        comboData->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboData->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"border:1px solid rgb(0,0,0);"));
 
         horizontalLayout_3->addWidget(comboData);
 
@@ -206,6 +218,7 @@ public:
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         labelParity = new QLabel(wPortControls);
         labelParity->setObjectName(QString::fromUtf8("labelParity"));
+        labelParity->setStyleSheet(QString::fromUtf8("border:0px solid rgb(0,0,0);"));
 
         horizontalLayout_4->addWidget(labelParity);
 
@@ -214,7 +227,8 @@ public:
         sizePolicy.setHeightForWidth(comboParity->sizePolicy().hasHeightForWidth());
         comboParity->setSizePolicy(sizePolicy);
         comboParity->setMinimumSize(QSize(148, 24));
-        comboParity->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboParity->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"border:1px solid rgb(0,0,0);"));
 
         horizontalLayout_4->addWidget(comboParity);
 
@@ -225,6 +239,7 @@ public:
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         labelStop = new QLabel(wPortControls);
         labelStop->setObjectName(QString::fromUtf8("labelStop"));
+        labelStop->setStyleSheet(QString::fromUtf8("border:0px solid rgb(0,0,0);"));
 
         horizontalLayout_5->addWidget(labelStop);
 
@@ -233,7 +248,9 @@ public:
         sizePolicy.setHeightForWidth(comboStop->sizePolicy().hasHeightForWidth());
         comboStop->setSizePolicy(sizePolicy);
         comboStop->setMinimumSize(QSize(148, 24));
-        comboStop->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        comboStop->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+"border:1px solid rgb(0,0,0);"));
 
         horizontalLayout_5->addWidget(comboStop);
 
@@ -252,7 +269,9 @@ public:
         sizePolicy1.setHeightForWidth(wBnRefush->sizePolicy().hasHeightForWidth());
         wBnRefush->setSizePolicy(sizePolicy1);
         wBnRefush->setMaximumSize(QSize(256, 48));
-        wBnRefush->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);"));
+        wBnRefush->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255);\n"
+"\n"
+"border:0px solid rgb(0,0,0);"));
 
         gridLayout_4->addWidget(wBnRefush, 1, 0, 1, 1);
 
@@ -261,14 +280,17 @@ public:
         wPlotControls->setObjectName(QString::fromUtf8("wPlotControls"));
         wPlotControls->setMinimumSize(QSize(0, 10));
         wPlotControls->setMaximumSize(QSize(16777215, 16777215));
-        wPlotControls->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 255);"));
+        wPlotControls->setStyleSheet(QString::fromUtf8("background-color: rgb(0, 170, 255);\n"
+"border:2px solid rgb(0,0,0);"));
         splitter_3->addWidget(wPlotControls);
         splitter_4->addWidget(splitter_3);
         wTRCtrl = new QWidget(splitter_4);
         wTRCtrl->setObjectName(QString::fromUtf8("wTRCtrl"));
         wTRCtrl->setMinimumSize(QSize(0, 10));
         wTRCtrl->setMaximumSize(QSize(16777215, 96));
-        wTRCtrl->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 170, 255);"));
+        wTRCtrl->setStyleSheet(QString::fromUtf8("\n"
+"background-color: rgb(255, 170, 255);\n"
+"border:2px solid rgb(0,0,0);"));
         splitter_4->addWidget(wTRCtrl);
 
         gridLayout_3->addWidget(splitter_4, 0, 0, 1, 1);
@@ -286,24 +308,32 @@ public:
         splitter->setFrameShadow(QFrame::Plain);
         splitter->setOrientation(Qt::Vertical);
         splitter->setOpaqueResize(true);
-        splitter->setHandleWidth(4);
+        splitter->setHandleWidth(2);
         splitter->setChildrenCollapsible(false);
         wPlotView = new QWidget(splitter);
         wPlotView->setObjectName(QString::fromUtf8("wPlotView"));
-        wPlotView->setMinimumSize(QSize(0, 240));
-        wPlotView->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 127);"));
+        wPlotView->setMinimumSize(QSize(0, 256));
+        wPlotView->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 85, 127);\n"
+"\n"
+"border:2px solid rgb(0,0,0);"));
         splitter->addWidget(wPlotView);
         wReceive = new QWidget(splitter);
         wReceive->setObjectName(QString::fromUtf8("wReceive"));
         wReceive->setMinimumSize(QSize(0, 64));
-        wReceive->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 85, 127);"));
+        wReceive->setStyleSheet(QString::fromUtf8("background-color: rgb(85, 85, 127);\n"
+"\n"
+"\n"
+"border:2px solid rgb(0,0,0);"));
         gridLayout_5 = new QGridLayout(wReceive);
         gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
         editReceive = new QTextEdit(wReceive);
         editReceive->setObjectName(QString::fromUtf8("editReceive"));
+        editReceive->setMinimumSize(QSize(0, 10));
         editReceive->setFont(font);
+        editReceive->setStyleSheet(QString::fromUtf8(""));
+        editReceive->setLineWidth(1);
 
         gridLayout_5->addWidget(editReceive, 0, 0, 1, 1);
 

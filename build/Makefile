@@ -225,6 +225,7 @@ Makefile: ../SerialAir.pro D:/Application/Qt/5.15.2/mingw81_64/mkspecs/win32-g++
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/qt_config.prf \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/toolchain.prf \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/default_pre.prf \
@@ -253,7 +254,6 @@ Makefile: ../SerialAir.pro D:/Application/Qt/5.15.2/mingw81_64/mkspecs/win32-g++
 		D:/Application/Qt/5.15.2/mingw81_64/lib/Qt5SerialPort.prl \
 		D:/Application/Qt/5.15.2/mingw81_64/lib/Qt5Core.prl \
 		D:/Application/Qt/5.15.2/mingw81_64/lib/qtmain.prl \
-		.qmake.stash \
 		D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf \
 		../libs/Material/components/resources.qrc
 	$(QMAKE) -o Makefile ../SerialAir.pro -spec win32-g++ CONFIG+=release
@@ -412,6 +412,7 @@ D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/qt_functions.prf:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/qt_config.prf:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.conf:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/exclusive_builds.prf:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/toolchain.prf:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/default_pre.prf:
@@ -440,7 +441,6 @@ D:/Application/Qt/5.15.2/mingw81_64/lib/Qt5Gui.prl:
 D:/Application/Qt/5.15.2/mingw81_64/lib/Qt5SerialPort.prl:
 D:/Application/Qt/5.15.2/mingw81_64/lib/Qt5Core.prl:
 D:/Application/Qt/5.15.2/mingw81_64/lib/qtmain.prl:
-.qmake.stash:
 D:/Application/Qt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf:
 ../libs/Material/components/resources.qrc:
 qmake: FORCE
